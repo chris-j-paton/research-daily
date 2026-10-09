@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Daily</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F0E7; --ivory:#FFFDF8; --stone:#DDD5C8; --sage:#A3AD98; --moss:#5B634E;
+  --amber:#2F5BB7; --amber-soft:#A9C4EA; --ink:#302D28;   /* accent: cobalt blue and pale blue (variable names kept) */
+  --ink-2:#5c574f; --ink-3:#8a8378;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --radius:14px; --radius-sm:9px;
+  --shadow-soft:0 1px 2px rgba(48,45,40,.04),0 10px 30px -12px rgba(48,45,40,.18);
+  --shadow-float:0 2px 6px rgba(48,45,40,.06),0 24px 48px -16px rgba(48,45,40,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+@media (max-width:640px){.wrap{padding:0 16px}}
+
+/* ---------- header ---------- */
+header.hero{padding:56px 0 28px;position:relative}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:600}
+h1.date{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.02;margin:10px 0 14px;letter-spacing:-.01em}
+.hero-sub{color:var(--ink-2);font-size:15px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.hero-sub .warn{color:var(--amber);font-weight:500}
+.hero-sub .refresh-hint{color:var(--ink-3)}
+.refresh-box{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap}
+.refresh-box .btn[disabled]{opacity:.65;cursor:progress}
+.refresh-box .progress{font-size:13px;color:var(--ink-3);max-width:520px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.refresh-box .progress.err{color:var(--amber)}
+.hero-sub code{font-family:inherit;background:var(--ivory);border:1px solid var(--stone);border-radius:6px;padding:1px 7px}
+
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0 8px}
+@media (max-width:820px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--ivory);border:1px solid rgba(221,213,200,.9);border-radius:var(--radius);padding:18px 20px 16px;box-shadow:var(--shadow-soft);text-align:left;transition:transform .18s,box-shadow .18s;position:relative}
+.tile:hover{transform:translateY(-2px);box-shadow:var(--shadow-float)}
+.tile .n{font-family:var(--serif);font-size:38px;line-height:1;font-weight:500}
+.tile .l{font-size:13px;color:var(--ink-2);margin-top:6px}
+.tile .d{font-size:12px;color:var(--ink-3);margin-top:2px}
+.tile.saved .n{color:var(--amber)}
+
+/* ---------- toolbar ---------- */
+.toolbar{position:sticky;top:12px;z-index:30;margin:18px 0 10px}
+@media (max-width:700px){.toolbar{position:static;margin-top:14px} .toolbar .glass{padding:10px 12px} .chip{font-size:12px;padding:4px 9px} article.paper .title{font-size:17px} section.feed{margin-top:40px;scroll-margin-top:12px}}
+.toolbar .glass{background:rgba(255,253,248,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(255,255,255,.7);box-shadow:0 1px 0 rgba(221,213,200,.6) inset,var(--shadow-float);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:var(--ivory);border:1px solid var(--stone);border-radius:999px;padding:7px 14px}
+.search input{border:0;background:none;outline:0;font:inherit;flex:1;color:var(--ink);min-width:0}
+.search svg{width:16px;height:16px;stroke:var(--ink-3);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+select.jsel{font:inherit;color:var(--ink);background:var(--ivory);border:1px solid var(--stone);border-radius:999px;padding:7px 12px;max-width:230px}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);padding:6px 10px;border-radius:999px;border:1px solid transparent;user-select:none}
+.toggle:hover{border-color:var(--stone)}
+.toggle .sw{width:32px;height:18px;border-radius:999px;background:var(--stone);position:relative;transition:background .18s}
+.toggle .sw:after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--ivory);box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .18s}
+.toggle.on .sw{background:var(--moss)}
+.toggle.on .sw:after{transform:translateX(14px)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip{font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--stone);background:rgba(255,253,248,.6);color:var(--ink-2);transition:all .15s;white-space:nowrap}
+.chip:hover{border-color:var(--sage);color:var(--ink)}
+.chip.on{background:var(--moss);border-color:var(--moss);color:var(--ivory)}
+.chip .c{opacity:.7;margin-left:4px;font-size:11px}
+.chip.edit{border-style:dashed;color:var(--amber);background:none}
+.btn{font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--stone);background:var(--ivory);color:var(--ink);transition:all .15s;white-space:nowrap}
+.btn:hover{border-color:var(--sage);box-shadow:var(--shadow-soft)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#fff}
+.btn.primary:hover{background:#264B99}
+.btn.quiet{border-color:transparent;background:none;color:var(--ink-2)}
+.btn.quiet:hover{border-color:var(--stone);box-shadow:none}
+
+/* ---------- sections ---------- */
+main{padding-bottom:120px}
+section.feed{margin-top:54px;scroll-margin-top:110px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--stone);padding-bottom:14px;margin-bottom:6px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,40px);margin:0;line-height:1.05;letter-spacing:-.01em}
+.sec-head h2 .cnt{font-family:var(--sans);font-size:13px;color:var(--ink-3);font-weight:500;margin-left:12px;vertical-align:middle;letter-spacing:0}
+.sec-head .desc{color:var(--ink-2);font-size:14px;margin-top:6px}
+.sec-tools{display:flex;gap:8px;align-items:center}
+
+.paper{display:grid;grid-template-columns:1fr auto;gap:8px 20px;padding:18px 14px;margin:0 -14px;border-bottom:1px solid rgba(221,213,200,.55);border-radius:var(--radius-sm);transition:background .15s;position:relative}
+.paper:hover{background:rgba(255,253,248,.9)}
+.unread-dot{width:32px;height:32px;display:inline-grid;place-items:center}
+.unread-dot:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px rgba(47,91,183,.14)}
+.unread-dot[hidden]{display:none}
+.paper.state-saved .title a{color:var(--amber)}
+.paper .title{font-family:var(--sans);font-size:19px;line-height:1.35;font-weight:600;letter-spacing:-.005em;margin:0}
+.paper .title a{text-decoration:none;transition:color .15s}
+.paper .title a:hover{color:var(--amber)}
+.paper .meta{font-size:12.5px;color:var(--ink-3);margin-top:5px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.paper .meta .j{color:var(--moss);font-weight:600}
+.paper .meta .sub{color:var(--ink-3)}
+.paper .meta .au{color:var(--ink-2)}
+.paper .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.tag{font-size:11px;padding:2px 8px;border-radius:999px;background:rgba(163,173,152,.22);color:var(--moss);font-weight:500}
+.tag.pre{background:rgba(221,213,200,.5);color:var(--ink-2)}
+mark{background:rgba(169,196,234,.5);color:inherit;border-radius:3px;padding:0 1px}
+.actions{display:flex;gap:4px;align-items:flex-start;opacity:.55;transition:opacity .15s}
+.paper:hover .actions,.paper:focus-within .actions{opacity:1}
+.ab{width:32px;height:32px;border-radius:50%;display:inline-grid;place-items:center;border:1px solid transparent;transition:all .15s;color:var(--ink-2)}
+.ab svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ab:hover{background:var(--ivory);border-color:var(--stone);color:var(--ink)}
+.ab.save.on,.ab.save:hover{color:var(--amber)}
+.ab.save.on svg{fill:var(--amber-soft)}
+.ab.read.on{color:var(--moss)}
+.ab.discard:hover{color:#8a3b2a}
+@media (max-width:640px){.paper{grid-template-columns:1fr}.actions{opacity:1}}
+.more{display:flex;justify-content:center;padding:18px 0 0}
+.empty{padding:34px 0 10px;color:var(--ink-2);font-size:15px}
+.empty b{font-family:var(--serif);font-weight:500;font-size:22px;display:block;margin-bottom:4px;color:var(--ink)}
+
+/* ---------- expandable details ---------- */
+.ab.expand svg{transition:transform .18s}
+.paper.open .ab.expand svg{transform:rotate(180deg)}
+.paper.open .ab.expand{color:var(--ink);background:var(--ivory);border-color:var(--stone)}
+.details{grid-column:1 / -1;display:none;margin-top:6px;padding:14px 18px 14px 18px;background:var(--ivory);border:1px solid rgba(221,213,200,.9);border-radius:var(--radius-sm);box-shadow:var(--shadow-soft);font-size:13.5px;line-height:1.6}
+.paper.open .details{display:block}
+.details .dh{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:600;margin:0 0 5px}
+.details .dh + .dh{margin-top:12px}
+.details .none{color:var(--ink-3);font-style:italic}
+.details .au-list{color:var(--ink-2)}
+.details .aff-list{color:var(--ink-2);font-size:12.5px;line-height:1.5;margin:0;padding:0;list-style:none}
+.details .aff-list li{padding:1px 0 1px 12px;position:relative}
+.details .aff-list li:before{content:"";position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--sage)}
+
+/* ---------- journal badges (wordmark-style, muted to match the page) ---------- */
+.jbadge{display:inline-flex;align-items:center;height:27px;padding:0 11px;border-radius:10px;border:1px solid var(--stone);background:var(--ivory);box-shadow:0 1px 1px rgba(48,45,40,.04);line-height:1;white-space:nowrap;letter-spacing:0;color:var(--ink)}
+.jbadge.pub-nature{font-family:var(--serif);font-weight:500;font-size:16px;text-transform:lowercase;letter-spacing:.005em}
+.jbadge.pub-nature .sub{font-weight:400;margin-left:4px;opacity:.78}
+.jbadge.pub-science{font-family:var(--serif);font-weight:600;font-size:16px;color:#A64038;letter-spacing:-.005em}
+.jbadge.pub-science .sub{font-weight:400;margin-left:4px;opacity:.85}
+.jbadge.pub-cell{font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.01em;color:#2A2622}
+.jbadge.pub-cell .sub{font-weight:500;margin-left:4px;opacity:.75}
+.jbadge.pub-biorxiv{font-family:var(--sans);font-weight:500;font-size:14.5px;color:var(--ink-2)}
+.jbadge.pub-biorxiv b{font-weight:700;color:#A64038}
+.details .open-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:500;color:var(--amber);text-decoration:none}
+.details .open-link:hover{text-decoration:underline}
+
+/* ---------- modal ---------- */
+.modal-bg{position:fixed;inset:0;background:rgba(48,45,40,.35);backdrop-filter:blur(4px);z-index:80;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:var(--ivory);border-radius:18px;box-shadow:var(--shadow-float);width:min(760px,100%);max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+.modal .mh{padding:22px 26px 12px;border-bottom:1px solid var(--stone)}
+.modal .mh h3{font-family:var(--serif);font-weight:500;font-size:28px;margin:0 0 4px}
+.modal .mh p{margin:0;color:var(--ink-2);font-size:13.5px}
+.modal .mb{padding:14px 26px;overflow:auto;flex:1}
+.modal .mf{padding:14px 26px;border-top:1px solid var(--stone);display:flex;gap:10px;justify-content:flex-end;align-items:center;flex-wrap:wrap}
+.cat-row{display:grid;grid-template-columns:200px 1fr auto;gap:10px;align-items:start;padding:10px 0;border-bottom:1px solid rgba(221,213,200,.6)}
+@media (max-width:640px){.cat-row{grid-template-columns:1fr}}
+.cat-row input,.cat-row textarea{font:inherit;font-size:13.5px;color:var(--ink);background:var(--cream);border:1px solid var(--stone);border-radius:var(--radius-sm);padding:8px 10px;width:100%}
+.cat-row textarea{min-height:58px;resize:vertical;line-height:1.45}
+.cat-row input{font-weight:500}
+.help{font-size:12.5px;color:var(--ink-3);margin:4px 0 10px}
+
+footer{color:var(--ink-3);font-size:12.5px;padding:40px 0;border-top:1px solid var(--stone);margin-top:60px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(10px);background:var(--ink);color:var(--cream);padding:10px 18px;border-radius:999px;font-size:13px;box-shadow:var(--shadow-float);opacity:0;transition:all .2s;z-index:90;pointer-events:none;display:flex;gap:14px;align-items:center}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.toast button{color:var(--amber-soft);font-weight:600;pointer-events:auto}
+.nodata{padding:80px 0;text-align:center;color:var(--ink-2)}
+.nodata b{font-family:var(--serif);font-size:32px;font-weight:500;display:block;color:var(--ink);margin-bottom:10px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Research Daily</div>
+    <h1 class="date" id="h-date">Loading…</h1>
+    <div class="hero-sub" id="h-sub"></div>
+    <div class="tiles" id="tiles"></div>
+  </header>
+
+  <div class="toolbar"><div class="glass">
+    <div class="row">
+      <label class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search titles, abstracts, authors…" autocomplete="off">
+      </label>
+      <select class="jsel" id="jsel"><option value="">All journals</option></select>
+      <button class="toggle" id="t-read" title="Include papers you have already marked as read"><span class="sw"></span>Show read</button>
+      <button class="toggle" id="t-other" title="Include news, comment, previews and corrections"><span class="sw"></span>News &amp; comment</button>
+      <button class="toggle" id="t-discarded" title="Show the papers you have discarded, with a restore button"><span class="sw"></span>Discarded</button>
+    </div>
+    <div class="row">
+      <div class="chips" id="chips"></div>
+    </div>
+  </div></div>
+
+  <main id="main"></main>
+
+  <footer>
+    Research Daily · a personal feed built from Crossref's DOI registry, publisher RSS feeds, Nature article metadata and the bioRxiv API. Links open on the publisher's site, so use your institutional login there.
+    Read, saved and discarded states live in this browser only.
+    <span id="f-meta"></span>
+  </footer>
+</div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal" role="dialog" aria-labelledby="m-title">
+    <div class="mh">
+      <h3 id="m-title">Keyword categories</h3>
+      <p>Each category is a list of terms, separated by commas. A term matches the start of a word, so <em>immun</em> matches immune, immunity and immunotherapy. Short terms of three letters or fewer must match a whole word.</p>
+    </div>
+    <div class="mb" id="m-body"></div>
+    <div class="mf">
+      <button class="btn quiet" id="m-add">+ Add category</button>
+      <button class="btn quiet" id="m-reset" title="Restore the categories from config.json">Reset to config.json</button>
+      <span style="flex:1"></span>
+      <button class="btn" id="m-cancel">Cancel</button>
+      <button class="btn primary" id="m-save">Save categories</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="data/papers.js"></script>
+<script>
+(function(){
+'use strict';
+const DATA = window.DASHBOARD_DATA;
+const $ = (s, el=document) => el.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const main = $('#main');
+
+if (!DATA || !DATA.papers) {
+  main.innerHTML = '<div class="nodata"><b>No data yet</b>Run <strong>refresh.bat</strong> (or <strong>python fetch.py</strong>) to pull the latest papers, then reload this page.</div>';
+  $('#h-date').textContent = 'Research Daily';
+  return;
+}
+
+/* ---------------- persistent state ---------------- */
+const SKEY = 'rd_state_v1', CKEY = 'rd_categories_v1';
+function loadJSON(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
+function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+const state = Object.assign({ items:{}, prefs:{ showRead:false, showOther:false, showDiscarded:false, cats:[], journal:'' } }, loadJSON(SKEY, {}));
+state.prefs = Object.assign({ showRead:false, showOther:false, showDiscarded:false, cats:[], journal:'' }, state.prefs);
+const persist = () => saveJSON(SKEY, state);
+let categories = loadJSON(CKEY, null) || DATA.meta.categories || {};
+
+/* ---------------- keyword engine ---------------- */
+let catRegex = {};
+function buildRegex(){
+  catRegex = {};
+  for (const [name, terms] of Object.entries(categories)) {
+    const parts = (terms||[]).map(t => t.trim()).filter(Boolean).map(t => {
+      const e = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return t.length <= 3 ? '\\b' + e + '\\b' : '\\b' + e;
+    });
+    if (parts.length) catRegex[name] = new RegExp(parts.join('|'), 'gi');
+  }
+}
+function tagPaper(p){
+  const text = p.title + ' ' + (p.abstract||'');
+  p._cats = [];
+  for (const [name, re] of Object.entries(catRegex)) { re.lastIndex = 0; if (re.test(text)) p._cats.push(name); }
+  p._search = (p.title + ' ' + (p.abstract||'') + ' ' + p.authors.join(' ') + ' ' + p.journal).toLowerCase();
+}
+function highlight(title, cats){
+  if (!cats.length) return esc(title);
+  const res = cats.map(c => catRegex[c]).filter(Boolean);
+  if (!res.length) return esc(title);
+  const combined = new RegExp(res.map(r => r.source).join('|'), 'gi');
+  let out = '', last = 0, m;
+  while ((m = combined.exec(title))) {
+    // extend to the end of the word for prefix terms
+    let end = m.index + m[0].length;
+    while (end < title.length && /[\w-]/.test(title[end])) end++;
+    out += esc(title.slice(last, m.index)) + '<mark>' + esc(title.slice(m.index, end)) + '</mark>';
+    last = end; combined.lastIndex = end;
+  }
+  return out + esc(title.slice(last));
+}
+function retag(){ buildRegex(); DATA.papers.forEach(tagPaper); }
+retag();
+
+/* ---------------- header ---------------- */
+const gen = new Date(DATA.meta.generated);
+const today = new Date();
+const hour = today.getHours();
+$('#h-date').textContent = (hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening') + ', Chris';
+$('.eyebrow').textContent = today.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long' });
+const staleDays = Math.floor((today - gen) / 864e5);
+const latestRun = DATA.meta.generated;
+const freshCount = DATA.papers.filter(p => p.first_seen === latestRun && p.kind !== 'other').length;
+$('#h-sub').innerHTML =
+  '<span>Updated ' + esc(gen.toLocaleString('en-GB', { weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })) + '</span>' +
+  '<span>' + freshCount + ' new since the previous refresh</span>' +
+  (staleDays >= 1 ? '<span class="warn">Data is ' + staleDays + ' day' + (staleDays>1?'s':'') + ' old</span>' : '') +
+  (DATA.meta.failures && DATA.meta.failures.length ? '<span class="warn" title="' + esc(DATA.meta.failures.join('\n')) + '">' + DATA.meta.failures.length + ' source(s) failed last run</span>' : '') +
+  '<span class="refresh-hint" id="refresh-slot">Run <code>Research Daily.bat</code> to get a Refresh button here</span>';
+$('#f-meta').textContent = ' Archive holds ' + DATA.papers.length + ' items.';
+
+/* ---------------- refresh (only when served by server.py) ---------------- */
+(async function setupRefresh(){
+  if (location.protocol === 'file:') return;
+  let st;
+  try { st = await (await fetch('/api/status', { cache:'no-store' })).json(); } catch(e) { return; }
+  if (!st || !st.server) return;
+  const slot = $('#refresh-slot');
+  slot.className = 'refresh-box';
+  slot.innerHTML = '<button class="btn primary" id="btn-refresh">Refresh papers</button><span class="progress" id="refresh-progress"></span>';
+  const btn = $('#btn-refresh'), prog = $('#refresh-progress');
+  let poll = null, startedHere = false;
+
+  function show(s){
+    const last = (s.log || []).filter(Boolean).slice(-1)[0] || '';
+    if (s.running) {
+      btn.disabled = true; btn.textContent = 'Refreshing…';
+      const secs = s.started ? Math.round(Date.now()/1000 - s.started) : 0;
+      prog.textContent = (last ? last.trim() : 'Starting…') + (secs ? '  ·  ' + secs + 's' : '');
+      prog.classList.remove('err');
+    } else {
+      btn.disabled = false; btn.textContent = 'Refresh papers';
+      if (s.exit === 0 && s.finished && s.finished * 1000 > gen.getTime()) {
+        prog.textContent = 'Done. Reloading…';
+        setTimeout(() => location.reload(), 600);
+      } else if (s.exit !== null && s.exit !== undefined && s.exit !== 0) {
+        prog.textContent = 'Refresh failed: ' + (last || 'see the server window');
+        prog.classList.add('err');
+      } else {
+        prog.textContent = '';
+      }
+    }
+  }
+  async function tick(){
+    try { const s = await (await fetch('/api/status', { cache:'no-store' })).json(); show(s); if (!s.running) { clearInterval(poll); poll = null; } }
+    catch(e) { prog.textContent = 'Lost contact with the local server.'; prog.classList.add('err'); clearInterval(poll); poll = null; }
+  }
+  btn.onclick = async () => {
+    try { await fetch('/api/refresh', { method:'POST' }); } catch(e) { prog.textContent = 'Could not reach the local server.'; prog.classList.add('err'); return; }
+    startedHere = true; show({ running:true, log:[] });
+    if (!poll) poll = setInterval(tick, 1500);
+  };
+  // a refresh may already be running (e.g. started from another tab)
+  if (st.running) { show(st); poll = setInterval(tick, 1500); }
+})();
+
+/* ---------------- controls ---------------- */
+const jsel = $('#jsel');
+const journalNames = [...new Set(DATA.papers.map(p => p.journal))].sort((a,b)=>a.localeCompare(b));
+for (const j of journalNames) { const o = document.createElement('option'); o.value = j; o.textContent = j; jsel.appendChild(o); }
+jsel.value = state.prefs.journal || '';
+jsel.onchange = () => { state.prefs.journal = jsel.value; persist(); render(); };
+
+const q = $('#q'); let qTimer;
+q.oninput = () => { clearTimeout(qTimer); qTimer = setTimeout(render, 160); };
+
+function wireToggle(id, key){
+  const b = $(id); const sync = () => b.classList.toggle('on', !!state.prefs[key]); sync();
+  b.onclick = () => { state.prefs[key] = !state.prefs[key]; persist(); sync(); render(); };
+}
+wireToggle('#t-read', 'showRead'); wireToggle('#t-other', 'showOther'); wireToggle('#t-discarded', 'showDiscarded');
+
+function renderChips(){
+  const box = $('#chips'); box.innerHTML = '';
+  const counts = {};
+  for (const p of DATA.papers) if (p.kind !== 'other' && !stateOf(p)) for (const c of p._cats) counts[c] = (counts[c]||0)+1;
+  for (const name of Object.keys(categories)) {
+    const b = document.createElement('button');
+    b.className = 'chip' + (state.prefs.cats.includes(name) ? ' on' : '');
+    b.innerHTML = esc(name) + '<span class="c">' + (counts[name]||0) + '</span>';
+    b.title = 'Unread papers matching ' + name;
+    b.onclick = () => {
+      const i = state.prefs.cats.indexOf(name);
+      if (i >= 0) state.prefs.cats.splice(i,1); else state.prefs.cats.push(name);
+      persist(); renderChips(); render();
+    };
+    box.appendChild(b);
+  }
+  if (state.prefs.cats.length) {
+    const clr = document.createElement('button'); clr.className = 'chip'; clr.textContent = 'Clear';
+    clr.onclick = () => { state.prefs.cats = []; persist(); renderChips(); render(); };
+    box.appendChild(clr);
+  }
+  const ed = document.createElement('button'); ed.className = 'chip edit'; ed.textContent = 'Edit categories';
+  ed.onclick = openEditor; box.appendChild(ed);
+}
+
+/* ---------------- item state ---------------- */
+function stateOf(p){ const s = state.items[p.id]; return s ? s.s : ''; }   // '', read, saved, discarded
+function setState(p, s){
+  if (s) state.items[p.id] = { s, t: Date.now() }; else delete state.items[p.id];
+  persist();
+}
+let lastUndo = null;
+function toast(msg, undo){
+  const t = $('#toast'); t.innerHTML = esc(msg) + (undo ? ' <button id="undo">Undo</button>' : '');
+  t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3500);
+  if (undo) $('#undo').onclick = () => { undo(); t.classList.remove('show'); };
+}
+
+/* ---------------- filtering ---------------- */
+function matches(p){
+  const st = stateOf(p);
+  if (st === 'discarded') return false;
+  if (st === 'read' && !state.prefs.showRead) return false;
+  if (state.prefs.journal && p.journal !== state.prefs.journal) return false;
+  if (state.prefs.cats.length && !state.prefs.cats.some(c => p._cats.includes(c))) return false;
+  const qq = q.value.trim().toLowerCase();
+  if (qq && !qq.split(/\s+/).every(w => p._search.includes(w))) return false;
+  return true;
+}
+
+const SECTIONS = [
+  { key:'research', title:'Research articles', desc:'', kinds:['research'] },
+  { key:'review',   title:'Reviews',           desc:'Review articles from the research journals above plus the Nature Reviews titles.', kinds:['review'] },
+  { key:'preprint', title:'Preprints',         desc:'bioRxiv, filtered to the subject categories in config.json. Not peer reviewed.', kinds:['preprint'] },
+  { key:'other',    title:'News & comment',    desc:'Editorials, previews, perspectives, research highlights and corrections.', kinds:['other'], optional:true },
+  { key:'saved',    title:'Saved for later',   desc:'Everything you have bookmarked. Saved papers never expire from this list.', saved:true },
+  { key:'discarded', title:'Discarded',        desc:'Papers you have discarded. Restore one to put it back in its section as unread.', discarded:true },
+];
+const PAGE = 40;
+const shown = {};
+
+/* ---------------- rendering ---------------- */
+function fmtDate(d){ if (!d) return ''; const x = new Date(d + 'T00:00:00'); return isNaN(x) ? d : x.toLocaleDateString('en-GB', { day:'numeric', month:'short' }); }
+function journalBadge(p){
+  const pub = (p.publisher || '').toLowerCase();
+  const name = p.journal || '';
+  if (pub === 'biorxiv') return '<span class="jbadge pub-biorxiv" title="bioRxiv preprint">bio<b>R</b>xiv</span>';
+  // split "Nature Communications" into the family wordmark plus the sub-title
+  let head = name, tail = '';
+  const fam = { nature:'Nature', science:'Science', cell:null }[pub];
+  if (fam && name.startsWith(fam + ' ')) { head = fam; tail = name.slice(fam.length + 1); }
+  return '<span class="jbadge pub-' + esc(pub) + '" title="' + esc(name) + '">' + esc(head) + (tail ? '<span class="sub">' + esc(tail) + '</span>' : '') + '</span>';
+}
+function authorsStr(a){ if (!a || !a.length) return ''; return a.length > 3 ? a.slice(0,3).join(', ') + ' et al.' : a.join(', '); }
+
+const ICON = {
+  save: '<svg viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></svg>',
+  read: '<svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg>',
+  discard: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  chevron: '<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>',
+  restore: '<svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
+};
+const openIds = new Set();
+
+function paperEl(p){
+  const st = stateOf(p);
+  const el = document.createElement('article');
+  el.className = 'paper' + (st ? ' state-' + st : '');
+  el.dataset.id = p.id;
+  const tags = p._cats.map(c => '<span class="tag">' + esc(c) + '</span>').join('') +
+               (p.kind === 'preprint' && p.subtype ? '<span class="tag pre">' + esc(p.subtype) + '</span>' : '');
+  const sub = p.kind === 'preprint' ? '' : (p.subtype && p.subtype !== 'Article' && p.subtype !== 'Research Article' ? '<span class="sub">' + esc(p.subtype) + '</span>' : '');
+  if (openIds.has(p.id)) el.classList.add('open');
+  el.innerHTML =
+    '<div>' +
+      '<h3 class="title"><a href="' + esc(p.link) + '" target="_blank" rel="noopener">' + highlight(p.title, p._cats) + '</a></h3>' +
+      '<div class="meta">' + journalBadge(p) + '<span>' + fmtDate(p.date) + '</span>' + sub + '</div>' +
+      (tags ? '<div class="tags">' + tags + '</div>' : '') +
+    '</div>' +
+    '<div class="actions">' +
+      '<span class="unread-dot" title="Not yet opened"' + (st ? ' hidden' : '') + '></span>' +
+      '<button class="ab expand" title="Show abstract and authors" aria-expanded="' + (openIds.has(p.id) ? 'true' : 'false') + '">' + ICON.chevron + '</button>' +
+      '<button class="ab save' + (st==='saved'?' on':'') + '" title="' + (st==='saved'?'Remove from saved':'Save for later') + '">' + ICON.save + '</button>' +
+      '<button class="ab read' + (st==='read'?' on':'') + '" title="' + (st==='read'?'Mark as unread':'Mark as read') + '">' + ICON.read + '</button>' +
+      (st === 'discarded' ? '<button class="ab restore" title="Restore to its section">' + ICON.restore + '</button>' : '<button class="ab discard" title="Discard (hide permanently)">' + ICON.discard + '</button>') +
+    '</div>' +
+    '<div class="details">' +
+      '<div class="dh">Abstract</div>' +
+      (p.abstract ? '<div>' + esc(p.abstract) + '</div>' : '<div class="none">No abstract is available from the feed. Open the paper to read it on the publisher site.</div>') +
+      '<div class="dh">Authors</div>' +
+      (p.authors.length ? '<div class="au-list">' + esc(p.authors.join(', ')) + '</div>' : '<div class="none">Author list not provided.</div>') +
+      '<div class="dh">Affiliations</div>' +
+      ((p.affiliations || []).length ? '<ul class="aff-list">' + p.affiliations.map(a => '<li>' + esc(a) + '</li>').join('') + '</ul>' : '<div class="none">' + (p.publisher === 'Cell' ? 'Cell Press does not publish affiliations in its feeds.' : 'Not available for this paper.') + '</div>') +
+      '<a class="open-link" href="' + esc(p.link) + '" target="_blank" rel="noopener">Open on ' + esc(p.journal === 'bioRxiv' ? 'bioRxiv' : 'publisher site') + ' &rarr;</a>' +
+    '</div>';
+
+  const markRead = () => { if (!stateOf(p)) { setState(p, 'read'); refreshPaper(p); } };
+  $('.title a', el).addEventListener('click', markRead);
+  $('.open-link', el).addEventListener('click', markRead);
+  $('.expand', el).onclick = () => {
+    const open = !el.classList.contains('open');
+    el.classList.toggle('open', open);
+    if (open) openIds.add(p.id); else openIds.delete(p.id);
+    $('.expand', el).setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  $('.save', el).onclick = () => { setState(p, st === 'saved' ? '' : 'saved'); rerenderAll(); toast(st === 'saved' ? 'Removed from saved' : 'Saved for later'); };
+  $('.read', el).onclick = () => { setState(p, stateOf(p) === 'read' ? '' : 'read'); rerenderAll(); };
+  if ($('.restore', el)) $('.restore', el).onclick = () => { setState(p, ''); rerenderAll(); toast('Restored as unread'); };
+  if ($('.discard', el)) $('.discard', el).onclick = () => {
+    const prev = stateOf(p); setState(p, 'discarded'); rerenderAll();
+    toast('Discarded', () => { setState(p, prev); rerenderAll(); });
+  };
+  return el;
+}
+function refreshPaper(p){ document.querySelectorAll('[data-id="' + CSS.escape(p.id) + '"]').forEach(old => old.replaceWith(paperEl(p))); }
+function rerenderAll(){ renderChips(); render(); }
+
+function render(){
+  const scrollY = window.scrollY;
+  main.innerHTML = '';
+  const tileData = {};
+  for (const sec of SECTIONS) {
+    if (sec.optional && !state.prefs.showOther) continue;
+    if (sec.discarded && !state.prefs.showDiscarded) continue;
+    let list;
+    if (sec.discarded) list = DATA.papers.filter(p => stateOf(p) === 'discarded' && (!state.prefs.journal || p.journal === state.prefs.journal) && (!state.prefs.cats.length || state.prefs.cats.some(c => p._cats.includes(c))) && (!q.value.trim() || q.value.trim().toLowerCase().split(/\s+/).every(w => p._search.includes(w))));
+    else if (sec.saved) list = DATA.papers.filter(p => stateOf(p) === 'saved' && (!state.prefs.journal || p.journal === state.prefs.journal) && (!state.prefs.cats.length || state.prefs.cats.some(c => p._cats.includes(c))) && (!q.value.trim() || matches(p)));
+    else list = DATA.papers.filter(p => sec.kinds.includes(p.kind) && matches(p));
+    if (!sec.saved && !sec.discarded) list.sort((a,b) => (b.first_seen > a.first_seen) - (b.first_seen < a.first_seen) || (b.date > a.date) - (b.date < a.date));
+    else list.sort((a,b) => (state.items[b.id].t||0) - (state.items[a.id].t||0));
+    tileData[sec.key] = list.length;
+
+    const s = document.createElement('section'); s.className = 'feed'; s.id = 'sec-' + sec.key;
+    const unreadN = (sec.saved || sec.discarded) ? 0 : list.filter(p => !stateOf(p)).length;
+    s.innerHTML = '<div class="sec-head"><div><h2>' + esc(sec.title) + '<span class="cnt">' + list.length + (sec.saved ? ' saved' : sec.discarded ? ' discarded' : (state.prefs.showRead ? ' shown · ' + unreadN + ' unread' : ' unread')) + '</span></h2>' + (sec.desc ? '<div class="desc">' + esc(sec.desc) + '</div>' : '') + '</div><div class="sec-tools"></div></div>';
+    if (!sec.saved && unreadN) {
+      const b = document.createElement('button'); b.className = 'btn quiet'; b.textContent = 'Mark all ' + unreadN + ' as read';
+      b.onclick = () => {
+        const ids = list.filter(p => !stateOf(p));
+        ids.forEach(p => setState(p, 'read')); rerenderAll();
+        toast('Marked ' + ids.length + ' as read', () => { ids.forEach(p => setState(p, '')); rerenderAll(); });
+      };
+      $('.sec-tools', s).appendChild(b);
+    }
+    if (!list.length) {
+      s.insertAdjacentHTML('beforeend', '<div class="empty"><b>' + (sec.saved ? 'Nothing saved yet' : sec.discarded ? 'Nothing discarded' : 'All caught up') + '</b>' + (sec.saved ? 'Use the bookmark button on any paper to keep it here.' : sec.discarded ? 'Papers you discard will be listed here.' : 'Nothing unread here' + (state.prefs.cats.length || q.value || state.prefs.journal ? ' for the current filters.' : '.')) + '</div>');
+    } else {
+      const n = shown[sec.key] || PAGE;
+      const frag = document.createDocumentFragment();
+      list.slice(0, n).forEach(p => frag.appendChild(paperEl(p)));
+      s.appendChild(frag);
+      if (list.length > n) {
+        const m = document.createElement('div'); m.className = 'more';
+        const b = document.createElement('button'); b.className = 'btn'; b.textContent = 'Show ' + Math.min(PAGE, list.length - n) + ' more of ' + (list.length - n);
+        b.onclick = () => { shown[sec.key] = n + PAGE; render(); };
+        m.appendChild(b); s.appendChild(m);
+      }
+    }
+    main.appendChild(s);
+  }
+  renderTiles();
+  window.scrollTo(0, scrollY);
+}
+
+function renderTiles(){
+  const unread = k => DATA.papers.filter(p => p.kind === k && !stateOf(p)).length;
+  const fresh = k => DATA.papers.filter(p => p.kind === k && !stateOf(p) && p.first_seen === latestRun).length;
+  const saved = DATA.papers.filter(p => stateOf(p) === 'saved').length;
+  const t = [
+    { k:'research', n:unread('research'), l:'Unread research articles', d:fresh('research') + ' new this refresh' },
+    { k:'review',   n:unread('review'),   l:'Unread reviews',           d:fresh('review') + ' new this refresh' },
+    { k:'preprint', n:unread('preprint'), l:'Unread preprints',         d:fresh('preprint') + ' new this refresh' },
+    { k:'saved',    n:saved,              l:'Saved for later',          d:'Bookmarked to read', cls:'saved' },
+  ];
+  $('#tiles').innerHTML = t.map(x => '<button class="tile ' + (x.cls||'') + '" data-go="sec-' + x.k + '"><div class="n">' + x.n + '</div><div class="l">' + x.l + '</div><div class="d">' + esc(x.d) + '</div></button>').join('');
+  $('#tiles').querySelectorAll('[data-go]').forEach(b => b.onclick = () => { const s = document.getElementById(b.dataset.go); if (s) s.scrollIntoView({ behavior:'smooth', block:'start' }); });
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeEditor(); });
+
+/* ---------------- category editor ---------------- */
+const modal = $('#modal');
+function openEditor(){
+  const body = $('#m-body'); body.innerHTML = '';
+  for (const [name, terms] of Object.entries(categories)) body.appendChild(catRow(name, terms.join(', ')));
+  modal.classList.add('show');
+}
+function catRow(name, terms){
+  const r = document.createElement('div'); r.className = 'cat-row';
+  r.innerHTML = '<input placeholder="Category name" value="' + esc(name) + '"><textarea placeholder="terms, separated, by, commas">' + esc(terms) + '</textarea><button class="ab discard" title="Remove category">' + ICON.discard + '</button>';
+  $('.discard', r).onclick = () => r.remove();
+  return r;
+}
+function closeEditor(){ modal.classList.remove('show'); }
+$('#m-add').onclick = () => { const r = catRow('', ''); $('#m-body').appendChild(r); $('input', r).focus(); };
+$('#m-cancel').onclick = closeEditor;
+modal.addEventListener('click', e => { if (e.target === modal) closeEditor(); });
+$('#m-reset').onclick = () => {
+  if (!confirm('Replace your edited categories with the ones in config.json?')) return;
+  categories = JSON.parse(JSON.stringify(DATA.meta.categories || {}));
+  try { localStorage.removeItem(CKEY); } catch(e){}
+  closeEditor(); state.prefs.cats = state.prefs.cats.filter(c => categories[c]); persist(); retag(); rerenderAll(); toast('Categories reset');
+};
+$('#m-save').onclick = () => {
+  const next = {};
+  $('#m-body').querySelectorAll('.cat-row').forEach(r => {
+    const n = $('input', r).value.trim(); const t = $('textarea', r).value.split(',').map(s => s.trim()).filter(Boolean);
+    if (n && t.length) next[n] = t;
+  });
+  categories = next; saveJSON(CKEY, categories);
+  state.prefs.cats = state.prefs.cats.filter(c => categories[c]); persist();
+  closeEditor(); retag(); rerenderAll(); toast('Categories saved');
+};
+
+renderChips(); render();
+})();
+</script>
+</body>
+</html>
