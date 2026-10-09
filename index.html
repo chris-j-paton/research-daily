@@ -245,6 +245,11 @@ function saveJSON(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } cat
 const state = Object.assign({ items:{}, prefs:{ showRead:false, showOther:false, showDiscarded:false, cats:[], journal:'' } }, loadJSON(SKEY, {}));
 state.prefs = Object.assign({ showRead:false, showOther:false, showDiscarded:false, cats:[], journal:'' }, state.prefs);
 const persist = () => saveJSON(SKEY, state);
+const KKEY = 'rd_saved_v1';
+const keep = loadJSON(KKEY, {});
+// saved papers that have aged out of the data file are restored from the local copy
+const present = new Set(DATA.papers.map(p => p.id));
+for (const [id, s] of Object.entries(state.items)) if (s.s === 'saved' && !present.has(id) && keep[id]) DATA.papers.push(keep[id]);
 let categories = loadJSON(CKEY, null) || DATA.meta.categories || {};
 
 /* ---------------- keyword engine ---------------- */
@@ -390,6 +395,9 @@ function renderChips(){
 function stateOf(p){ const s = state.items[p.id]; return s ? s.s : ''; }   // '', read, saved, discarded
 function setState(p, s){
   if (s) state.items[p.id] = { s, t: Date.now() }; else delete state.items[p.id];
+  if (s === 'saved') { const c = Object.assign({}, p); delete c._cats; delete c._search; keep[p.id] = c; }
+  else if (keep[p.id]) delete keep[p.id];
+  saveJSON(KKEY, keep);
   persist();
 }
 let lastUndo = null;

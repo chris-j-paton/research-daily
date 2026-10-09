@@ -226,6 +226,11 @@ def dedupe(seq):
     return out
 
 
+def apply_section(journal, kind):
+    """Journals configured as section=review put every paper in the Reviews section."""
+    return "review" if (journal.get("section") == "review" and kind == "research") else kind
+
+
 def merge_into(store, rec, source):
     """Merge rec into store (dict id -> record). Higher-ranked type wins, longer abstract wins."""
     old = store.get(rec["id"])
@@ -311,7 +316,7 @@ def parse_feed(journal, raw, review_patterns):
         else:
             kind, subtype = classify_heuristic(journal, title, snippet, authors, doi, review_patterns)
             src = "heuristic"
-        out.append(make_record(journal, doi, title, link, authors, date, snippet, kind, subtype, src))
+        out.append(make_record(journal, doi, title, link, authors, date, snippet, apply_section(journal, kind), subtype, src))
     return out
 
 
@@ -332,7 +337,7 @@ def crossref_journal(journal, since, review_patterns):
         msg = payload.get("message", {})
         items = msg.get("items") or []
         for it in items:
-            ct = (it.get("container-title") or [""])[0].lower()
+            ct = html.unescape((it.get("container-title") or [""])[0]).lower()
             if ct and ct != wanted:
                 continue  # Crossref's ISSN records sometimes bundle sister journals
             doi = clean_doi(it.get("DOI"))
@@ -362,7 +367,7 @@ def crossref_journal(journal, since, review_patterns):
             src = "heuristic"
             if journal["publisher"] != "Nature" and kind == "research":
                 subtype, src = "Unclassified", "default"
-            rec = make_record(journal, doi, title, link, authors, date, abstract, kind, subtype, src)
+            rec = make_record(journal, doi, title, link, authors, date, abstract, apply_section(journal, kind), subtype, src)
             rec["affiliations"] = dedupe(affs)
             out.append(rec)
         cursor = msg.get("next-cursor")
@@ -396,7 +401,7 @@ def enrich_from_nature_page(p, journal):
     p["affil_checked"] = True
     kind, subtype = classify_page_meta(meta.get("dc.type"), meta.get("citation_article_type"), journal)
     if RANK["page"] >= RANK.get(p.get("type_source", "default"), 0):
-        p["kind"], p["subtype"], p["type_source"] = kind, subtype, "page"
+        p["kind"], p["subtype"], p["type_source"] = apply_section(journal, kind), subtype, "page"
     desc = strip_html(meta.get("dc.description", ""))
     if len(desc) > len(p.get("abstract", "")):
         p["abstract"] = desc
@@ -622,13 +627,18 @@ def main():
 
     # ---- prune and write
     cutoff_j = (TODAY - dt.timedelta(days=int(cfg.get("archive_days", 45)))).isoformat()
-    cutoff_p = (TODAY - dt.timedelta(days=int(cfg.get("preprint_days", 7)) + 7)).isoformat()
+    cutoff_p = (TODAY - dt.timedelta(days=int(cfg.get("preprint_days", 7)) + 2)).isoformat()
     papers = []
     for p in archive.values():
         cutoff = cutoff_p if p["kind"] == "preprint" else cutoff_j
-        if p.get("first_seen", "")[:10] >= cutoff or p.get("date", "") >= cutoff:
+        if p.get("date", "") >= cutoff:
             papers.append(p)
     papers.sort(key=lambda p: (p.get("first_seen", ""), p.get("date", "")), reverse=True)
+    # news, comment and corrections are only ever skimmed: drop their abstracts to keep the data file small
+    for p in papers:
+        if p["kind"] == "other":
+            p["abstract"] = ""
+            p["affiliations"] = []
 
     meta = {
         "generated": now_iso,

@@ -37,7 +37,7 @@ Each refresh prints a per-journal line showing how many items Crossref and the f
 | `Research Daily.bat` | Starts the local server and opens the dashboard. Use this day to day. |
 | `server.py` | The local server: serves the page and runs `fetch.py` when Refresh is clicked. |
 | `refresh.bat` | Command-line alternative: runs the fetch and opens `index.html` from disk. |
-| `data/papers.json` | Rolling archive (45 days of journal items, about 12 days of preprints). |
+| `data/papers.json` | Rolling archive (30 days of journal items, about a week of preprints). Older items are dropped on each refresh; use the Save button plus Zotero for anything you want to keep. Saved papers keep a copy in the browser so they outlive the archive. |
 
 ## Adding a journal
 

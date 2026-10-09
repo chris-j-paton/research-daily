@@ -1,6 +1,6 @@
 {
   "_comment": "Edit this file to add or remove journals, bioRxiv subject categories, and keyword categories. Then run refresh.bat (or python fetch.py). Each journal needs its ISSN (print or online, as listed on the journal's website) so Crossref can be used as the complete list of published DOIs; RSS feeds and article pages add article types and abstracts.",
-  "archive_days": 45,
+  "archive_days": 30,
   "lookback_days": 7,
   "preprint_days": 5,
   "page_lookups_per_run": 400,
@@ -26,9 +26,21 @@
     { "name": "Cancer Cell", "issn": "1535-6108", "feeds": ["https://www.cell.com/cancer-cell/current.rss", "https://www.cell.com/cancer-cell/inpress.rss"], "publisher": "Cell", "section": "research" },
     { "name": "Molecular Cell", "issn": "1097-2765", "feeds": ["https://www.cell.com/molecular-cell/current.rss", "https://www.cell.com/molecular-cell/inpress.rss"], "publisher": "Cell", "section": "research" },
     { "name": "Cell Reports", "issn": "2211-1247", "feeds": ["https://www.cell.com/cell-reports/current.rss", "https://www.cell.com/cell-reports/inpress.rss"], "publisher": "Cell", "section": "research" },
+    { "name": "Nature Structural & Molecular Biology", "issn": "1545-9993", "feeds": ["https://www.nature.com/nsmb.rss"], "publisher": "Nature", "section": "research" },
+    { "name": "Nature Chemistry", "issn": "1755-4330", "feeds": ["https://www.nature.com/nchem.rss"], "publisher": "Nature", "section": "research" },
+    { "name": "Cell Stem Cell", "issn": "1934-5909", "feeds": ["https://www.cell.com/cell-stem-cell/current.rss", "https://www.cell.com/cell-stem-cell/inpress.rss"], "publisher": "Cell", "section": "research" },
+    { "name": "Cell Metabolism", "issn": "1550-4131", "feeds": ["https://www.cell.com/cell-metabolism/current.rss", "https://www.cell.com/cell-metabolism/inpress.rss"], "publisher": "Cell", "section": "research" },
+    { "name": "Cell Systems", "issn": "2405-4712", "feeds": ["https://www.cell.com/cell-systems/current.rss", "https://www.cell.com/cell-systems/inpress.rss"], "publisher": "Cell", "section": "research" },
+    { "name": "Cell Chemical Biology", "issn": "2451-9456", "feeds": ["https://www.cell.com/cell-chemical-biology/current.rss", "https://www.cell.com/cell-chemical-biology/inpress.rss"], "publisher": "Cell", "section": "research" },
+    { "name": "Cell Reports Medicine", "issn": "2666-3791", "feeds": ["https://www.cell.com/cell-reports-medicine/current.rss", "https://www.cell.com/cell-reports-medicine/inpress.rss"], "publisher": "Cell", "section": "research" },
     { "name": "Nature Reviews Cancer", "issn": "1474-1768", "feeds": ["https://www.nature.com/nrc.rss"], "publisher": "Nature", "section": "review" },
     { "name": "Nature Reviews Genetics", "issn": "1471-0064", "feeds": ["https://www.nature.com/nrg.rss"], "publisher": "Nature", "section": "review" },
-    { "name": "Nature Reviews Drug Discovery", "issn": "1474-1776", "feeds": ["https://www.nature.com/nrd.rss"], "publisher": "Nature", "section": "review" }
+    { "name": "Nature Reviews Drug Discovery", "issn": "1474-1776", "feeds": ["https://www.nature.com/nrd.rss"], "publisher": "Nature", "section": "review" },
+    { "name": "Nature Reviews Immunology", "issn": "1474-1733", "feeds": ["https://www.nature.com/nri.rss"], "publisher": "Nature", "section": "review" },
+    { "name": "Nature Reviews Molecular Cell Biology", "issn": "1471-0072", "feeds": ["https://www.nature.com/nrm.rss"], "publisher": "Nature", "section": "review" },
+    { "name": "Nature Reviews Methods Primers", "issn": "2662-8449", "feeds": ["https://www.nature.com/nrmp.rss"], "publisher": "Nature", "section": "review" },
+    { "name": "Trends in Immunology", "issn": "1471-4906", "feeds": ["https://www.cell.com/trends/immunology/current.rss", "https://www.cell.com/trends/immunology/inpress.rss"], "publisher": "Cell", "section": "review" },
+    { "name": "Trends in Biotechnology", "issn": "0167-7799", "feeds": ["https://www.cell.com/trends/biotechnology/current.rss", "https://www.cell.com/trends/biotechnology/inpress.rss"], "publisher": "Cell", "section": "review" }
   ],
   "biorxiv": {
     "_comment": "Subject categories to keep, exactly as bioRxiv names them (lower case). Delete the list entirely to keep every category.",
