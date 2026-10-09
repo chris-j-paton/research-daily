@@ -1,8 +1,10 @@
 {
 "meta": {
-"generated": "2026-10-09T23:42:00",
+"generated": "2026-10-09T23:23:44",
 "new_this_run": 0,
-"failures": [],
+"failures": [
+"Feed Nature Reviews Cancer (https://www.nature.com/nrc.rss): XML parse error: not well-formed (invalid token): line 14, column 4"
+],
 "report": [
 {
 "journal": "Nature",
@@ -107,7 +109,7 @@
 {
 "journal": "Nature Reviews Cancer",
 "crossref": 5,
-"feed": 8
+"feed": "failed"
 },
 {
 "journal": "Nature Reviews Genetics",
@@ -720,7 +722,7 @@
 {
 "id": "doi:10.1038/s41467-026-78320-3",
 "title": "pH-responsive manganese carboxymethyl chitosan hydrogel releases pesticide to promote rice tillering and suppress root-parasitic weeds",
-"link": "https://www.nature.com/articles/s41467-026-78320-3.pdf",
+"link": "https://www.nature.com/articles/s41467-026-78320-3",
 "doi": "10.1038/s41467-026-78320-3",
 "journal": "Nature Communications",
 "publisher": "Nature",
@@ -1085,7 +1087,7 @@
 {
 "id": "doi:10.1038/s41467-026-78027-5",
 "title": "ATM promotes nucleolytic processing of reversed replication forks during DNA interstrand cross-link repair",
-"link": "https://www.nature.com/articles/s41467-026-78027-5.pdf",
+"link": "https://www.nature.com/articles/s41467-026-78027-5",
 "doi": "10.1038/s41467-026-78027-5",
 "journal": "Nature Communications",
 "publisher": "Nature",
@@ -1563,7 +1565,7 @@
 {
 "id": "doi:10.1038/s41467-026-78433-9",
 "title": "Environmentally Relevant Concentrations of Nanomaterials Drive Photochemical Production of Reactive Species and Pollutant Degradation in Surface Waters",
-"link": "https://www.nature.com/articles/s41467-026-78433-9.pdf",
+"link": "https://www.nature.com/articles/s41467-026-78433-9",
 "doi": "10.1038/s41467-026-78433-9",
 "journal": "Nature Communications",
 "publisher": "Nature",
@@ -1632,7 +1634,7 @@
 {
 "id": "doi:10.1038/s41467-026-78402-2",
 "title": "Pipeline infrastructure for hydrogen transport in the United States",
-"link": "https://www.nature.com/articles/s41467-026-78402-2.pdf",
+"link": "https://www.nature.com/articles/s41467-026-78402-2",
 "doi": "10.1038/s41467-026-78402-2",
 "journal": "Nature Communications",
 "publisher": "Nature",
@@ -1665,7 +1667,7 @@
 {
 "id": "doi:10.1038/s41467-026-78008-8",
 "title": "Periodontal pathogen Tannerella forsythia promotes liver fibrosis via ICAM-1⁺ neutrophil–dependent hepatic stellate cell activation",
-"link": "https://www.nature.com/articles/s41467-026-78008-8.pdf",
+"link": "https://www.nature.com/articles/s41467-026-78008-8",
 "doi": "10.1038/s41467-026-78008-8",
 "journal": "Nature Communications",
 "publisher": "Nature",
@@ -1703,7 +1705,7 @@
 {
 "id": "doi:10.1038/s41467-026-78380-5",
 "title": "A cross-layer 2D photodetection framework for standardized readout and signal fusion",
-"link": "https://www.nature.com/articles/s41467-026-78380-5.pdf",
+"link": "https://www.nature.com/articles/s41467-026-78380-5",
 "doi": "10.1038/s41467-026-78380-5",
 "journal": "Nature Communications",
 "publisher": "Nature",
