@@ -125,6 +125,11 @@ CORRECTION_RE = re.compile(
     r"^(author|publisher)?\s*(correction|erratum|retraction( note)?|addendum)\b", re.I
 )
 HIGHLIGHT_RE = re.compile(r"\bet al\.?\b")
+# journal front matter that some feeds list as if it were an article
+FRONT_MATTER_RE = re.compile(
+    r"^(advisory board|editorial board|subscription|copyright|table of contents|contents|masthead|"
+    r"in this issue|front cover|cover image|forthcoming|issue information|announcements?)\b", re.I
+)
 
 
 def classify_feed_type(ft, publisher):
@@ -146,7 +151,7 @@ def classify_feed_type(ft, publisher):
     return None
 
 
-def classify_page_meta(dc_type, art_type, journal):
+def classify_page_meta(dc_type, art_type, journal, title=""):
     """Nature-family pages: <meta name="dc.type"> and <meta name="citation_article_type">."""
     d = (dc_type or "").strip().lower()
     a = (art_type or "").strip()
@@ -154,6 +159,8 @@ def classify_page_meta(dc_type, art_type, journal):
     label = a or dc_type or ""
     if d == "erratum" or CORRECTION_RE.search(a):
         return "other", label or "Correction"
+    if FRONT_MATTER_RE.search(title or ""):
+        return "other", "Front matter"
     if d == "originalpaper":
         return "research", label or "Article"
     if d == "reviewpaper":
@@ -181,6 +188,8 @@ def classify_heuristic(journal, title, snippet, authors, doi, review_patterns):
     t = (title or "").strip()
     if CORRECTION_RE.search(t):
         return "other", "Correction"
+    if FRONT_MATTER_RE.search(t):
+        return "other", "Front matter"
     if doi and re.search(r"10\.1038/d\d{5}-", doi):
         return "other", "News & comment"
     if journal["section"] == "review":
@@ -313,6 +322,8 @@ def parse_feed(journal, raw, review_patterns):
             kind, subtype, src = explicit[0], explicit[1], "feed"
             if CORRECTION_RE.search(title):
                 kind, subtype = "other", "Correction"
+            elif FRONT_MATTER_RE.search(title):
+                kind, subtype = "other", "Front matter"
         else:
             kind, subtype = classify_heuristic(journal, title, snippet, authors, doi, review_patterns)
             src = "heuristic"
@@ -399,7 +410,7 @@ def enrich_from_nature_page(p, journal):
     if len(insts) > len(p.get("affiliations", [])):
         p["affiliations"] = insts
     p["affil_checked"] = True
-    kind, subtype = classify_page_meta(meta.get("dc.type"), meta.get("citation_article_type"), journal)
+    kind, subtype = classify_page_meta(meta.get("dc.type"), meta.get("citation_article_type"), journal, p.get("title", ""))
     if RANK["page"] >= RANK.get(p.get("type_source", "default"), 0):
         p["kind"], p["subtype"], p["type_source"] = apply_section(journal, kind), subtype, "page"
     desc = strip_html(meta.get("dc.description", ""))

@@ -16,6 +16,10 @@ Opening `index.html` directly from disk still works, but without the Refresh but
 
 Read, saved and discarded states are stored in your browser (localStorage), so stick with one browser.
 
+## Swipe mode
+
+The **Swipe mode** button in the filter bar opens a full-screen, one-paper-at-a-time view built for the phone. Each card shows the journal, title, abstract, authors and affiliations. Swipe right (or press the right arrow) to save, swipe left (left arrow) to discard, swipe up (up arrow) to skip and mark as read. The round buttons under the card do the same, the circular arrow undoes the last swipe (or press Z), and the arrow-out button opens the paper. **Filters** at the bottom chooses which sections feed the deck (research and reviews by default, preprints optional), newest-first or random order, a single journal, and topics. The deck only contains unread papers, and every swipe updates the same saved, read and discarded states the main dashboard uses. Exit returns to the dashboard.
+
 ## Where the papers come from
 
 Publisher RSS feeds are capped (Nature sub-journal feeds list only 8 items, the Nature feed is mostly news, Cell's issue feed omits online-first papers), so they cannot be the source of truth. The fetcher therefore combines four sources:

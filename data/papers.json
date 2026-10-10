@@ -1,17 +1,13 @@
 {
 "meta": {
-"generated": "2026-10-10T12:02:58",
-"new_this_run": 502,
-"failures": [
-"Feed Nature (https://www.nature.com/nature.rss): XML parse error: not well-formed (invalid token): line 14, column 4",
-"Feed Nature Chemical Biology (https://www.nature.com/nchembio.rss): XML parse error: not well-formed (invalid token): line 14, column 4",
-"Feed Nature Reviews Cancer (https://www.nature.com/nrc.rss): XML parse error: not well-formed (invalid token): line 14, column 4"
-],
+"generated": "2026-10-10T18:34:12",
+"new_this_run": 503,
+"failures": [],
 "report": [
 {
 "journal": "Nature",
 "crossref": 104,
-"feed": "failed"
+"feed": 75
 },
 {
 "journal": "Nature Communications",
@@ -51,7 +47,7 @@
 {
 "journal": "Nature Chemical Biology",
 "crossref": 7,
-"feed": "failed"
+"feed": 8
 },
 {
 "journal": "Nature Cancer",
@@ -105,7 +101,7 @@
 },
 {
 "journal": "Cell Reports",
-"crossref": 30,
+"crossref": 32,
 "feed": 117
 },
 {
@@ -146,7 +142,7 @@
 {
 "journal": "Nature Reviews Cancer",
 "crossref": 3,
-"feed": "failed"
+"feed": 8
 },
 {
 "journal": "Nature Reviews Genetics",
@@ -585,7 +581,7 @@
 {
 "id": "doi:10.1038/s41467-026-78376-1",
 "title": "Twisted superconducting quantum diodes for high fidelity anharmonic qubits",
-"link": "https://www.nature.com/articles/s41467-026-78376-1",
+"link": "https://www.nature.com/articles/s41467-026-78376-1.pdf",
 "doi": "10.1038/s41467-026-78376-1",
 "journal": "Nature Communications",
 "publisher": "Nature",
@@ -596,18 +592,24 @@
 "Yingying Wu"
 ],
 "date": "2026-10-10",
-"abstract": "In superconducting circuits, bidirectional signal propagation can cause back-reflections and back-action that couple environmental noise back to coherent elements, degrading fidelity. Nonreciprocal superconducting diodes provide an intrinsic route to suppress such back-scattering at the circuit level. However, their diode efficiency and quantum integration remain limited. Here, we realize a quantum diode in twisted NbSe 2 under in-plane and out-of-plane magnetic fields. A mere 1 ∘ twist yields an efficiency enhancement over pristine devices, reaching 27.6%. Quantum simulations reveal that this intermediate efficiency, well below 100% ideal, is both experimentally practical and optimal for preserving qubit anharmonicity and stabilizing two-level systems. These findings show that maximal rectification is not always beneficial for quantum information, establishing a new principle for designing the fundamental properties of twisted superconductors towards low-power, high-fidelity quantum circuits.",
+"abstract": "In superconducting circuits, bidirectional signal propagation can cause back-reflections and back-action that couple environmental noise back to coherent elements, degrading fidelity. Nonreciprocal superconducting diodes provide an intrinsic route to suppress such back-scattering at the circuit level. However, their diode efficiency and quantum integration remain limited. Here, we realize a quantum diode in twisted NbSe2 under in-plane and out-of-plane magnetic fields. A mere 1∘ twist yields an efficiency enhancement over pristine devices, reaching 27.6%. Quantum simulations reveal that this intermediate efficiency, well below 100% ideal, is both experimentally practical and optimal for preserving qubit anharmonicity and stabilizing two-level systems. These findings show that maximal rectification is not always beneficial for quantum information, establishing a new principle for designing the fundamental properties of twisted superconductors towards low-power, high-fidelity quantum circuits. Superconducting diodes can provide nonreciprocal elements for superconducting and quantum circuits, but the role of diode efficiency in quantum-device performance remains unclear. Here, the authors demonstrate an enhanced superconducting diode effect in twisted NbSe2 and show that even a moderate degree of nonreciprocity is sufficient to stabilize anharmonic qubit circuits.",
 "kind": "research",
 "subtype": "Article",
-"type_source": "heuristic",
+"type_source": "page",
 "sources": [
 "crossref",
 "feed"
 ],
-"affiliations": [],
-"first_seen": "2026-10-10T12:02:58",
+"affiliations": [
+"Department of Electrical and Computer Engineering, University of Florida, Gainesville, USA",
+"Department of Physics and Center for Quantum Frontiers of Research and Technology (QFort), National Cheng Kung University, Tainan, Taiwan, ROC",
+"Institute of Physics, Slovak Academy of Sciences, Bratislava, Slovakia",
+"Department of Physics, State University of New York at Buffalo, Buffalo, USA"
+],
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": true,
-"abstract_checked": false
+"abstract_checked": false,
+"affil_checked": true
 },
 {
 "id": "doi:10.1016/j.celrep.2026.118118",
@@ -645,7 +647,47 @@
 "feed"
 ],
 "affiliations": [],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
+"page_checked": false,
+"abstract_checked": false
+},
+{
+"id": "doi:10.1016/j.celrep.2026.118120",
+"title": "The ENL-USP7 complex regulates HIV latency through BRD4 protein stabilization",
+"link": "https://www.cell.com/cell-reports/fulltext/S2211-1247(26)01199-X",
+"doi": "10.1016/j.celrep.2026.118120",
+"journal": "Cell Reports",
+"publisher": "Cell",
+"authors": [
+"Waqas Ahmed",
+"Xiaoyi Li",
+"Ciniso S. Shabangu",
+"Hongjie Chen",
+"Nikesh Katuwal",
+"Jennifer Kirchherr",
+"Wenshe R. Liu",
+"Xin Li",
+"Yongcheng Song",
+"Kaixiu Luo",
+"H. Umit Kaniskan",
+"Jian Jin",
+"Sara Gianella",
+"David M. Margolis",
+"Nancie M. Archin",
+"Yuyang Tang",
+"Guochun Jiang"
+],
+"date": "2026-10-10",
+"abstract": "Ahmed et al. identify ENL-USP7-BRD4 as a host pathway that maintains HIV latency. Targeted degradation of ENL or USP7 reactivates latent HIV in resting CD4+ T cells and brain microglia from individuals receiving antiretroviral therapy. Mechanistically, ENL recruits USP7 to stabilize BRD4 and maintain viral latency.",
+"kind": "research",
+"subtype": "Article",
+"type_source": "feed",
+"sources": [
+"crossref",
+"feed"
+],
+"affiliations": [],
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -687,49 +729,11 @@
 "subtype": "Article",
 "type_source": "feed",
 "sources": [
+"crossref",
 "feed"
 ],
 "affiliations": [],
-"first_seen": "2026-10-10T12:02:58",
-"page_checked": false,
-"abstract_checked": false
-},
-{
-"id": "doi:10.1016/j.celrep.2026.118120",
-"title": "The ENL-USP7 complex regulates HIV latency through BRD4 protein stabilization",
-"link": "https://www.cell.com/cell-reports/fulltext/S2211-1247(26)01199-X",
-"doi": "10.1016/j.celrep.2026.118120",
-"journal": "Cell Reports",
-"publisher": "Cell",
-"authors": [
-"Waqas Ahmed",
-"Xiaoyi Li",
-"Ciniso S. Shabangu",
-"Hongjie Chen",
-"Nikesh Katuwal",
-"Jennifer Kirchherr",
-"Wenshe R. Liu",
-"Xin Li",
-"Yongcheng Song",
-"Kaixiu Luo",
-"H. Umit Kaniskan",
-"Jian Jin",
-"Sara Gianella",
-"David M. Margolis",
-"Nancie M. Archin",
-"Yuyang Tang",
-"Guochun Jiang"
-],
-"date": "2026-10-10",
-"abstract": "Ahmed et al. identify ENL-USP7-BRD4 as a host pathway that maintains HIV latency. Targeted degradation of ENL or USP7 reactivates latent HIV in resting CD4+ T cells and brain microglia from individuals receiving antiretroviral therapy. Mechanistically, ENL recruits USP7 to stabilize BRD4 and maintain viral latency.",
-"kind": "research",
-"subtype": "Article",
-"type_source": "feed",
-"sources": [
-"feed"
-],
-"affiliations": [],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -796,7 +800,7 @@
 "affiliations": [
 "The Pirbright Institute, Woking, Surrey, UK, GU24 0NF; Department of Infectious Disease, Imperial College London, UK, W2 1PG (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -822,7 +826,7 @@
 "affiliations": [
 "School of Bio Sciences and Technology, Vellore Institute of Technology (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -850,7 +854,7 @@
 "affiliations": [
 "University of Florida (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -888,7 +892,7 @@
 "affiliations": [
 "Massachusetts Institute of Technology (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -923,7 +927,7 @@
 "affiliations": [
 "Georgia Institute of Technology (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -952,7 +956,7 @@
 "affiliations": [
 "Yale University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -986,7 +990,7 @@
 "affiliations": [
 "University of Washington (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1016,7 +1020,7 @@
 "affiliations": [
 "University of Warwick (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1055,7 +1059,7 @@
 "affiliations": [
 "University of Calgary (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1083,7 +1087,7 @@
 "affiliations": [
 "National Institute of Technology Durgapur (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1114,7 +1118,7 @@
 "affiliations": [
 "University of Utah (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1146,7 +1150,7 @@
 "affiliations": [
 "Princeton University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1177,7 +1181,7 @@
 "affiliations": [
 "Living Systems Institute, University of Exeter, Exeter, UK (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1223,7 +1227,7 @@
 "affiliations": [
 "University of California, Irvine (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1263,7 +1267,7 @@
 "affiliations": [
 "University of Pennsylvania (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1299,7 +1303,7 @@
 "affiliations": [
 "University of Pennsylvania (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1333,7 +1337,7 @@
 "affiliations": [
 "Johns Hopkins University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1377,7 +1381,7 @@
 "affiliations": [
 "University of California, Irvine (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1410,7 +1414,7 @@
 "affiliations": [
 "Cincinnati Children's Hospital Medical Center/University of Cincinnati (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1448,7 +1452,7 @@
 "affiliations": [
 "University of Geneva (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1492,7 +1496,7 @@
 "affiliations": [
 "UMR 1071 M2iSH (Microbes, Intestine, Inflammation and Susceptibility of the Host), Clermont Auvergne University, Inserm, INRAe USC 1382, Clermont-Ferrand, Franc (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1531,7 +1535,7 @@
 "affiliations": [
 "University of South Florida Morsani College of Medicine (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1560,7 +1564,7 @@
 "affiliations": [
 "Department of Information Technology, Uppsala University, Uppsala, Sweden (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1594,7 +1598,7 @@
 "affiliations": [
 "University of Calgary Cumming School of Medicine (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1625,7 +1629,7 @@
 "affiliations": [
 "ADA Forsyth Institute (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1657,7 +1661,7 @@
 "affiliations": [
 "NASA Ames Research Center (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1685,7 +1689,7 @@
 "affiliations": [
 "University of Waterloo (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1725,7 +1729,7 @@
 "affiliations": [
 "Institute for Environmental Engineering, ETH Zurich, Switzerland (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1771,7 +1775,7 @@
 "affiliations": [
 "Vinmec-VinUni Institute of Immunology, College of Health Sciences, VinUniversity, Hanoi, Vietnam (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1803,7 +1807,7 @@
 "affiliations": [
 "Department of Molecular Biosciences, University of South Florida, Tampa, Florida, USA (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1836,7 +1840,7 @@
 "affiliations": [
 "TUD Dresden University of Technology (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1867,7 +1871,7 @@
 "affiliations": [
 "Complutense University of Madrid (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1901,7 +1905,7 @@
 "affiliations": [
 "IPREM: Institut des Sciences Analytiques et de Physico-chimie pour l'Environnement et les Materiaux (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1931,7 +1935,7 @@
 "affiliations": [
 "Presidency University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1965,7 +1969,7 @@
 "affiliations": [
 "Department of Microbiology, Tumor and Cell Biology (MTC), Karolinska Institutet, Solna, Sweden; Science for Life Laboratory, Karolinska Institutet, Solna, Swede (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -1996,7 +2000,7 @@
 "affiliations": [
 "CNRS- Aix Marseille Université (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2022,7 +2026,7 @@
 "affiliations": [
 "University of Michigan (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2051,7 +2055,7 @@
 "affiliations": [
 "Yamaguchi University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2093,7 +2097,7 @@
 "affiliations": [
 "Boston University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2122,7 +2126,7 @@
 "affiliations": [
 "University of Iceland, National University Hospital of Iceland, Johns Hopkins University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2158,7 +2162,7 @@
 "affiliations": [
 "University Medical Center Goettingen (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2188,7 +2192,7 @@
 "affiliations": [
 "University of California, Davis (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2217,7 +2221,7 @@
 "affiliations": [
 "University of Southern California (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2256,7 +2260,7 @@
 "affiliations": [
 "University of Pittsburgh (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2286,7 +2290,7 @@
 "affiliations": [
 "Rutgers University, Newark (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2316,7 +2320,7 @@
 "affiliations": [
 "University of Copenhagen (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2345,7 +2349,7 @@
 "affiliations": [
 "KU (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2407,7 +2411,7 @@
 "affiliations": [
 "University of Colorado Anschutz Medical Campus (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2441,7 +2445,7 @@
 "affiliations": [
 "TU Wien (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2471,7 +2475,7 @@
 "affiliations": [
 "University of Oulu, University of Oulu Hospital (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2497,7 +2501,7 @@
 "affiliations": [
 "UT Austin (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2525,7 +2529,7 @@
 "affiliations": [
 "Sanofi (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2554,7 +2558,7 @@
 "affiliations": [
 "Ribeirão Preto Medical School - University of São Paulo (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2580,7 +2584,7 @@
 "affiliations": [
 "University of North Carolina at Charlotte (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2624,7 +2628,7 @@
 "affiliations": [
 "IHEM-CONICET (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2658,7 +2662,7 @@
 "affiliations": [
 "Arizona State University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2685,7 +2689,7 @@
 "affiliations": [
 "Department of Structural Biology, St. Jude Children's Research Hospital, 262 Danny Thomas Pl, Memphis, TN, 38105, USA (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2718,7 +2722,7 @@
 "affiliations": [
 "Delft University of Technology (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2757,7 +2761,7 @@
 "affiliations": [
 "National Institutes of Health (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2786,7 +2790,7 @@
 "affiliations": [
 "University of Colorado, Boulder (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2827,7 +2831,7 @@
 "affiliations": [
 "Boston Children's Hospital (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2861,7 +2865,7 @@
 "affiliations": [
 "Element Biosciences, San Diego, CA, USA (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2895,7 +2899,7 @@
 "affiliations": [
 "Hospital Clinic Barcelona (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2925,7 +2929,7 @@
 "affiliations": [
 "University of Washington School of Medicine (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2951,7 +2955,7 @@
 "affiliations": [
 "Princeton University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -2982,7 +2986,44 @@
 "affiliations": [
 "UC Berkeley (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
+"page_checked": false,
+"abstract_checked": false
+},
+{
+"id": "doi:10.64898/2026.10.01.755757",
+"title": "A ncBAF to cBAF Switch Regulates Human Hematopoietic Progenitor Myeloid Differentiation",
+"link": "https://www.biorxiv.org/content/10.64898/2026.10.01.755757v2",
+"doi": "10.64898/2026.10.01.755757",
+"journal": "bioRxiv",
+"publisher": "bioRxiv",
+"authors": [
+"Adelman, E. R.",
+"Adele, A. A.",
+"Ricardo Gutierrez Silva, C.",
+"Pilala, K.",
+"Garcia-Martinez, L.",
+"Teran Pumar, O.",
+"Beckedorff, F.",
+"Cingaram, P. R.",
+"Chakrabarti, R.",
+"Bayik, D.",
+"Shiekhattar, R.",
+"Morey, L.",
+"Figueroa, M. E."
+],
+"date": "2026-10-10",
+"abstract": "The mammalian BRG-/BRM-associated factor (BAF) chromatin remodeling complexes are crucial regulators of hematopoietic stem and progenitor cell (HSPC) fate. Expression of the ncBAF subcomponent, BRD9, is altered in both normal aging and myeloid malignancies. We find that in adult human HSPC, BRD9 regulates the differentiation of myeloid progenitors. Upon degradation of BRD9 in these cells, ncBAF is displaced from the chromatin, leading in turn to enhanced recruitment of cBAF to bona fide CEBPA target sites. With the shift from ncBAF to cBAF, HSPC differentiation results in increased generation of myeloid-derived suppressor cells (MDSC) that secrete elevated levels of IL-8. Soluble factors from these myeloid cells, which have lost BRD9, enhance the stemness of breast cancer cells in vitro. In contrast, bromodomain inhibition of BRD9 results in minimal alterations of ncBAF binding and myeloid differentiation, indicating that BRD9 acts as a barrier to human MDSC differentiation in a bromodomain-independent manner.",
+"kind": "preprint",
+"subtype": "Cancer Biology",
+"type_source": "feed",
+"sources": [
+"biorxiv"
+],
+"affiliations": [
+"University of Miami Miller School of Medicine (corresponding author)"
+],
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3016,7 +3057,7 @@
 "feed"
 ],
 "affiliations": [],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3043,7 +3084,7 @@
 "affiliations": [
 "The University of Tokyo (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3076,7 +3117,7 @@
 "affiliations": [
 "Department of Molecular Microbiology, John Innes Centre (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3112,7 +3153,7 @@
 "affiliations": [
 "The Pirbright Institute (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3146,7 +3187,7 @@
 "affiliations": [
 "University of California, Davis (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3192,7 +3233,7 @@
 "affiliations": [
 "University of North Carolina at Chapel Hill (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3218,7 +3259,7 @@
 "affiliations": [
 "INEU-CONICET; FLENI; (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3245,7 +3286,7 @@
 "affiliations": [
 "University of California Berkeley (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3279,7 +3320,7 @@
 "affiliations": [
 "Research Group Medical Systems Biology, Institute of Experimental Medicine, Kiel University and University Hospital Schleswig-Holstein, Kiel, Germany (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3309,7 +3350,7 @@
 "affiliations": [
 "Instituto de Biologia Molecular y Celular de Rosario (IBR-CONICET), UNR (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3338,7 +3379,7 @@
 "affiliations": [
 "University of Oxford (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3377,7 +3418,7 @@
 "affiliations": [
 "Peking University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3411,7 +3452,7 @@
 "affiliations": [
 "Department of Computer Science, San Jose State University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3445,7 +3486,7 @@
 "affiliations": [
 "Eunice Kennedy Shriver National Institute of Child Health and Human Development, National Institutes of Health (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3490,7 +3531,7 @@
 "affiliations": [
 "All India Institute of Medical Sciences, New Delhi (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3519,7 +3560,7 @@
 "affiliations": [
 "Institute of Human Virology, University of Maryland School of Medicine (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3547,7 +3588,7 @@
 "affiliations": [
 "CICECO - Instituto de Materiais de Aveiro, University of Aveiro (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3590,7 +3631,7 @@
 "affiliations": [
 "Fondazione Biotecnopolo di Siena (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3623,7 +3664,7 @@
 "affiliations": [
 "University of Leeds (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3650,7 +3691,7 @@
 "affiliations": [
 "Roger Williams University (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3698,7 +3739,7 @@
 "affiliations": [
 "Human Genetics Center, Department of Epidemiology, The University of Texas Health Science Center at Houston School of Public Health, Houston, Texas, USA (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3729,7 +3770,7 @@
 "affiliations": [
 "Genomique Metabolique, Genoscope, Institut Francois Jacob, Commissariat a l Energie Atomique (CEA), CNRS, Universite Evry, Universite Paris-Saclay, 2 Rue Gaston (corresponding author)"
 ],
-"first_seen": "2026-10-10T12:02:58",
+"first_seen": "2026-10-10T18:34:12",
 "page_checked": false,
 "abstract_checked": false
 },
@@ -3743,8 +3784,8 @@
 "authors": [],
 "date": "2026-10-10",
 "abstract": "",
-"kind": "review",
-"subtype": "Review",
+"kind": "other",
+"subtype": "Front matter",
 "type_source": "heuristic",
 "sources": [
 "feed"
@@ -3765,8 +3806,8 @@
 "authors": [],
 "date": "2026-10-10",
 "abstract": "",
-"kind": "review",
-"subtype": "Review",
+"kind": "other",
+"subtype": "Front matter",
 "type_source": "heuristic",
 "sources": [
 "feed"
@@ -3787,8 +3828,8 @@
 "authors": [],
 "date": "2026-10-10",
 "abstract": "",
-"kind": "review",
-"subtype": "Review",
+"kind": "other",
+"subtype": "Front matter",
 "type_source": "heuristic",
 "sources": [
 "crossref",
@@ -3810,8 +3851,8 @@
 "authors": [],
 "date": "2026-10-10",
 "abstract": "",
-"kind": "review",
-"subtype": "Review",
+"kind": "other",
+"subtype": "Front matter",
 "type_source": "heuristic",
 "sources": [
 "crossref",
