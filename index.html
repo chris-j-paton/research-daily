@@ -306,7 +306,7 @@ $('#h-sub').innerHTML =
   '<span>' + freshCount + ' new since the previous refresh</span>' +
   (staleDays >= 1 ? '<span class="warn">Data is ' + staleDays + ' day' + (staleDays>1?'s':'') + ' old</span>' : '') +
   (DATA.meta.failures && DATA.meta.failures.length ? '<span class="warn" title="' + esc(DATA.meta.failures.join('\n')) + '">' + DATA.meta.failures.length + ' source(s) failed last run</span>' : '') +
-  '<span class="refresh-hint" id="refresh-slot">Run <code>Research Daily.bat</code> to get a Refresh button here</span>';
+  '<span class="refresh-hint" id="refresh-slot"></span>';
 $('#f-meta').textContent = ' Archive holds ' + DATA.papers.length + ' items.';
 
 /* ---------------- refresh (only when served by server.py) ---------------- */
